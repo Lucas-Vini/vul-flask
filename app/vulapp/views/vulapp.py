@@ -1,8 +1,8 @@
 from flask import Blueprint
+from flask import render_template
 
 vulapp = Blueprint("vulapp", __name__)
 
-@vulapp.route("/vulapp")
+@vulapp.route("/")
 def main():
-	'''Ping endpoint, used to know if the app is up'''
-	return "vulapp"
+	return render_template('base.html')
