@@ -5,4 +5,4 @@ vulapp = Blueprint("vulapp", __name__)
 
 @vulapp.route("/")
 def main():
-	return render_template('base.html')
+	return render_template('index.html')

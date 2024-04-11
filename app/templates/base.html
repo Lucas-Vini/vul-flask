@@ -1,11 +1,36 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Vul-flask</title>
-</head>
-<body>
-	<h1>Vul-flask</h1>
-</body>
+<!doctype html>
+<html lang="en">
+    <head>
+        {% block head %}
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        {% block styles %}
+        	<link rel="stylesheet" type="text/css"
+            href="{{url_for('static', filename='css/style.css')}}">
+            <!-- Bootstrap CSS -->
+            <link rel="stylesheet" type="text/css"
+            href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+        {% endblock %}
+
+       
+        {% endblock %}
+    </head>
+    {% block navbar %}
+	<div class="navbar navbar-dark bg-dark">
+		<a href="/" class="navbar-brand px-3">Flask Vulnerável</a>
+		<div class="mr-auto px-3">
+	    	<a href="/" class="navbar-text px-3 my-nav-link">Entrar</a>
+	    	<a href="/" class="navbar-text px-3 my-nav-link">Cadastrar</a>
+		</div>
+		
+	</div>
+	{% endblock %}
+    <body>
+        <!-- Your page content -->
+        {% block content %}{% endblock %}
+        
+    </body>
+    
 </html>
