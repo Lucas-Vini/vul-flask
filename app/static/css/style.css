@@ -5,3 +5,12 @@
 .my-nav-link:hover{
 	color: white;
 }
+
+.sidebar-link{
+	text-decoration: none;
+	color: black;
+}
+
+.sidebar-link:hover{
+	color: #A9A9A9;
+}

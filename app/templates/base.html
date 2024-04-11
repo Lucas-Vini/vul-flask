@@ -28,8 +28,18 @@
 	</div>
 	{% endblock %}
     <body>
-        <!-- Your page content -->
-        {% block content %}{% endblock %}
+        {% block content %}
+        <div class="container py-3 mx-5 mt-4">
+            <div class="row">
+                <ul class="list-group nav nav-pills col-sm-4">
+                    <li class="list-group-item list-group-item-action text-center bg-dark "><h2 class="text-white">Vulnerabilidades</h2></li>
+                    <li class="list-group-item list-group-item-action"><a href="" class="sidebar-link"><h4>Cross-Site Scripting</h4> </a></li>
+                    <li class="list-group-item list-group-item-action"><a href="" class="sidebar-link"><h4>Cross-Site Request Forgery</h4> </a></li>
+                    <li class="list-group-item list-group-item-action"><a href="" class="sidebar-link"><h4>SQL injection</h4> </a></li>
+                </ul>
+            </div>
+        </div>
+        {% endblock %}
         
     </body>
     
