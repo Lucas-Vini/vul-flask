@@ -15,4 +15,4 @@ Execute os seguintes comandos no terminal na ordem a seguir:
 
 6 - `flask run`
 
-Com as configurações padrões do flask, a aplicação poderá ser acessada `http://127.0.0.1:5000`
+Com as configurações padrões do flask, a aplicação poderá ser acessada no navegador através do endereço `http://127.0.0.1:5000`
