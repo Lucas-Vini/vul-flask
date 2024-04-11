@@ -1,1 +1,15 @@
 {% extends 'base.html' %}
+
+{% block container %}
+<ul class="list-group nav nav-pills">
+    <li class="list-group-item list-group-item-action text-center bg-dark "><h2 class="text-white">Bem-vindo à vul-flask!</h2></li>
+    <li class="list-group-item">
+        <p>
+            A vul-flask é uma aplicação de demonstração das principais vulnerabilidades em aplicações web desenvolvido em Python utilizando o framework Flask. Você pode explorar cada uma delas no menu à esquerda.
+        </p>
+        <p>
+            Em algumas vulnerabilidades é necessário estar logado na aplicação para ter uma experiência mais completa. Você consegue se cadastrar e logar através dos botões na barra de navegação no canto superior direito.
+        </p>
+    </li>
+</ul>
+{% endblock %}
