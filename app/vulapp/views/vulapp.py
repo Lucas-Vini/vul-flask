@@ -13,6 +13,8 @@ def signup():
 	form = SignUpForm()
 
 	if form.validate_on_submit():
+		print(form.username.data, form.password.data)
+		#SignUpHandler(form.username.data, form.password.data)
 		return redirect('/')
 
 	return render_template('signup.html', form=form)
