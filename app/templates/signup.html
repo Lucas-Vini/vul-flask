@@ -15,6 +15,13 @@
                                 {{ form.username.label }}<br>
                                 {{ form.username(size=32, class_="form-control") }}
                             </p>
+                            <div class="row">
+                                <span class="text-danger text-center">&nbsp;
+                                    {% for error in form.username.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                &nbsp;</span>
+                            </div>
                         </div>
                         <div class="form-group">
                             <p>
@@ -29,12 +36,28 @@
                             <small id="passwordHelpBlock" class="form-text text-muted">
                                   Senha com ao menos 8 dígitos, números, letras maiúsculas e minúsculas e caracteres especiais.
                             </small>
+                            <div class="row">
+                                <span class="text-danger text-center">&nbsp;
+                                    {% for error in form.password.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                &nbsp;</span>
+                                <span>&nbsp;</span>
+                            </div>
                         </div>
                         <div class="form-group">
                             <p>
                                 {{ form.password_confirmation.label }}<br>
                                 {{ form.password_confirmation(size=32, class_="form-control") }}
                             </p>
+                            <div class="row">
+                                <span class="text-danger text-center">&nbsp;
+                                    {% for error in form.password_confirmation.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                &nbsp;</span>
+                                <span>&nbsp;</span>
+                            </div>
                         <div class="text-center">
                             {{ form.submit(class_="btn btn-dark") }}
                         </div>

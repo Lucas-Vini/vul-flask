@@ -1,6 +1,7 @@
 from flask import Blueprint
-from flask import render_template, redirect
+from flask import render_template, redirect, flash
 from app.vulapp.forms.auth import SignUpForm
+from app.vulapp.handlers.auth import SignUpHandler
 
 vulapp = Blueprint("vulapp", __name__)
 
@@ -13,8 +14,6 @@ def signup():
 	form = SignUpForm()
 
 	if form.validate_on_submit():
-		print(form.username.data, form.password.data)
-		#SignUpHandler(form.username.data, form.password.data)
+		sign_up_result = SignUpHandler(form.username.data, form.password.data)
 		return redirect('/')
-
-	return render_template('signup.html', form=form)
+	return render_template('signup.html', title="Cadastrar", form=form)

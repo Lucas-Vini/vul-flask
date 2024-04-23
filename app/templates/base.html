@@ -16,6 +16,12 @@
             <script src="{{url_for('static', filename='js/jquery.min.js')}}"></script> 
         {% endblock %}
 
+        {% if title %}
+        <title>{{ title }} - VulFlask</title>
+        {% else %}
+        <title>VulFlask</title>
+        {% endif %}
+
        
         {% endblock %}
     </head>
