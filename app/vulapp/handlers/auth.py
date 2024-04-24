@@ -5,10 +5,13 @@ class SignUpHandler():
 		self.username = username
 		self.password_hash = generate_password_hash(password)
 
-		if self.user_exist:
+		if self.user_exist(self.username):
 			return False
 		else:
 			self.create_user(self.username, self.password_hash)
+
+	def user_exist(self, username):
+		pass
 
 	def create_user(self, username, password_hash):
 		pass

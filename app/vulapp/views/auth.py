@@ -3,13 +3,13 @@ from flask import render_template, redirect, flash
 from app.vulapp.forms.auth import SignUpForm
 from app.vulapp.handlers.auth import SignUpHandler
 
-vulapp = Blueprint("vulapp", __name__)
+auth = Blueprint("auth", __name__)
 
-@vulapp.route("/")
+@auth.route("/")
 def home():
 	return render_template('index.html')
 
-@vulapp.route("/signup", methods = ['GET', 'POST'])
+@auth.route("/signup", methods = ['GET', 'POST'])
 def signup():
 	form = SignUpForm()
 

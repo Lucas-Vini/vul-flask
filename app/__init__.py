@@ -1,12 +1,14 @@
 from flask import Flask
 from app.ping import ping
-from app.vulapp import vulapp
+from app.vulapp import auth
+from app.vulapp import sql_injection
 import os
 from app.vulapp.database.db import init_db, db
 
 ACTIVE_ENDPOINTS = (
 	("/", ping),
-	("/", vulapp )
+	("/", auth ),
+	("/", sql_injection)
 	)
 
 def create_app():
