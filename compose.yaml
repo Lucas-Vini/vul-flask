@@ -3,12 +3,20 @@ services:
     build: .
     ports:
       - "5000:5000"
+    links:
+      - db
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /code
   db:
     image: "mysql:5.7"
     environment:
       MYSQL_DATABASE: 'vul_db'
       MYSQL_USER: 'vul_user'
       MYSQL_PASSWORD: 'vul_password'
+      MYSQL_ROOT_HOST: '%'
       MYSQL_ROOT_PASSWORD: 'vul_root_password'
     ports:
       - '3306:3306'

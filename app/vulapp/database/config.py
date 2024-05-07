@@ -1,7 +1,6 @@
-import os
-
-basedir = os.getcwd()
-
 class DatabaseConfig:
 	def __init__(self):
-		self.sqlite_file_path = basedir + '/app/vulapp/database/vul.db'
+		self.mysql_user = "vul_user"
+		self.mysql_password = "vul_password"
+		self.mysql_endpoint = "db"
+		self.mysql_database = "vul_db"
