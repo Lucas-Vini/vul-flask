@@ -20,5 +20,6 @@ def search_products_by_keyword(search):
 	return Product.query.filter(Product.name.like(search)).all()
 
 def search_products_by_keyword_with_sql_injection(search):
-	query = "SELECT * FROM product WHERE name LIKE '%{}%'".format(search)
-	return db.session.execute(text(query))
+	query = "SELECT * FROM product WHERE name LIKE '%{}%';".format(search)
+	result = db.session.execute(text(query)).all()
+	return result
