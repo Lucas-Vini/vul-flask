@@ -5,14 +5,8 @@ Execute os seguintes comandos no terminal na ordem a seguir:
 
 1 - `git clone https://github.com/Lucas-Vini/vul-flask`
 
-2 - `python3 -m venv ./vulenv`
+2 - `cd vul-flask`
 
-3 - `source vulenv/bin/activate`
+3 - `docker compose up`
 
-4 - `cd vul-flask`
-
-5 - `pip install -r requirements.txt`
-
-6 - `flask run`
-
-Com as configurações padrões do flask, a aplicação poderá ser acessada no navegador através do endereço `http://127.0.0.1:5000`
+A aplicação poderá ser acessada no navegador através do endereço `http://localhost:5000/`
