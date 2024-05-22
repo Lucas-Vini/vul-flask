@@ -48,3 +48,8 @@ class SignUpForm(FlaskForm):
     password_confirmation = PasswordField('Confirme a senha', validators=password_confirmation_validators)
     submit = SubmitField('Cadastrar')
 
+class LoginForm(FlaskForm):
+    username = StringField('Usuário')
+    password = PasswordField('Senha')
+    submit = SubmitField('Entrar')
+

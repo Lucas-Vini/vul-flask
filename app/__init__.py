@@ -4,6 +4,7 @@ from app.vulapp import auth
 from app.vulapp import sql_injection
 import os
 from app.vulapp.database.db import init_db, db
+from flask_login import LoginManager
 
 ACTIVE_ENDPOINTS = (
 	("/", ping),
@@ -13,6 +14,8 @@ ACTIVE_ENDPOINTS = (
 
 def create_app():
 	app = Flask(__name__)
+	login_manager = LoginManager(app)
+
 	#use a stored secret key to keep sessions in application reload
 	app.config['SECRET_KEY'] = os.urandom(50) 
 

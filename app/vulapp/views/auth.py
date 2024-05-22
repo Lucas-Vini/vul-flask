@@ -1,7 +1,8 @@
 from flask import Blueprint
 from flask import render_template, redirect, flash
-from app.vulapp.forms.auth import SignUpForm
-from app.vulapp.handlers.auth import SignUpHandler
+from app.vulapp.forms.auth import SignUpForm, LoginForm
+from app.vulapp.handlers.auth import SignUpHandler, LoginHandler
+from flask_login import current_user, login_user
 
 auth = Blueprint("auth", __name__)
 
@@ -17,3 +18,21 @@ def signup():
 		sign_up_result = SignUpHandler(form.username.data, form.password.data)
 		return redirect('/')
 	return render_template('signup.html', title="Cadastrar", form=form)
+
+@auth.route("/login", methods = ['GET', 'POST'])
+def login():
+
+	if current_user.is_authenticated:
+		return redirect('/')
+		
+	form = LoginForm()
+
+	if form.validate_on_submit():
+		user = LoginHandler(form.username.data, form.password.data)
+
+		if user:
+			login_user(user)
+			return redirect('/')
+
+
+	return render_template('login.html', title="Entrar", form=form)
