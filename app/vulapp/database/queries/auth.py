@@ -1,6 +1,6 @@
 from app.vulapp.database.models.user import User
 from app.vulapp.database.db import db
-from app import login_manager
+from app.vulapp.extensions.flask_login import login_manager
 
 def add_new_user(username, password_hash):	
 	new_user = User(
@@ -15,4 +15,4 @@ def get_user(username):
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.get(user_id)
+    return db.session.get(User, int(user_id))

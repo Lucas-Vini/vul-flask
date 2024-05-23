@@ -15,8 +15,10 @@ def signup():
 	form = SignUpForm()
 
 	if form.validate_on_submit():
-		sign_up_result = SignUpHandler(form.username.data, form.password.data)
-		return redirect('/')
+		user_created = SignUpHandler(form.username.data, form.password.data).user_created
+		if user_created:
+			return redirect('/login')
+
 	return render_template('signup.html', title="Cadastrar", form=form)
 
 @auth.route("/login", methods = ['GET', 'POST'])
@@ -28,11 +30,10 @@ def login():
 	form = LoginForm()
 
 	if form.validate_on_submit():
-		user = LoginHandler(form.username.data, form.password.data)
+		user = LoginHandler().check_user(form.username.data, form.password.data)
 
 		if user:
 			login_user(user)
 			return redirect('/')
-
 
 	return render_template('login.html', title="Entrar", form=form)

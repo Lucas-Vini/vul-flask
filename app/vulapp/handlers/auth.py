@@ -5,11 +5,11 @@ class SignUpHandler():
 	def __init__(self, username, password):
 		self.username = username
 		self.password_hash = generate_password_hash(password)
+		self.user_created = False
 
-		if self.user_exist(self.username):
-			return False
-		else:
+		if not self.user_exist(self.username):
 			self.create_user(self.username, self.password_hash)
+			self.user_created = True
 
 	def user_exist(self, username):
 		user = auth_queries.get_user(username)
@@ -21,7 +21,7 @@ class SignUpHandler():
 		auth_queries.add_new_user(username, password_hash)
 
 class LoginHandler():
-	def __init__(self, username, password):
+	def check_user(self, username, password):
 		user = auth_queries.get_user(username)
 		if user:
 			if check_password_hash(user.password_hash, password):
