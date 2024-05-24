@@ -31,22 +31,22 @@
                     </form>
                 </div>
             </div>
-            <div class="row">
-                Escolha um dos animais do sorteio:
-                Macaco, Lagarto, Tartaruga, Galinha, Tubarão, Cobra, Baleia, Besouro, Onça, Tucano
+            <div class="row text-center">
+                <p>
+                Escolha um dos animais do sorteio:<br>
+                Macaco, Lagarto, Tartaruga, Galinha, Tubarão, Cobra, Baleia, Besouro, Onça, Tucano</p>
             </div>
-            <div class="row">
+            <div class="row text-center">
                 {% if result is not none%}
                     {% if result %}
-                        <h1>Parabéns!</h1>
-                        <h2>Você escolheu o animal {{bet}} e o animal sorteado foi {{animal}}.</h2>
-                        <br>
-                        <h2>Você ganhou 50 pontos!</h2>
+                        <h1 class="text-success">Parabéns, você ganhou 50 pontos!</h1>
                     {% else %}
-                        <h1>Que pena!</h1>
-                        <h2>Você escolheu o animal {{bet}} e o animal sorteado foi {{animal}}.</h2>
-                        <br>
-                        <h2>Você perdeu 2 pontos!</h2>
+                        <h1 class="text-danger">Que pena, você perdeu 2 pontos!</h1>
+                    {% endif %}
+                    {% if xss %}
+                        <h4>Você escolheu o animal {{bet|safe}} e o animal sorteado foi {{animal}}.</h4>
+                    {% else %}
+                        <h4>Você escolheu o animal {{bet}} e o animal sorteado foi {{animal}}.</h4>
                     {% endif %}                    
                 {% endif %}
 
