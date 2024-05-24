@@ -8,7 +8,14 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-10 offset-1">
-                    <form action="" class="needs-validation" method="post" novalidate>
+                    {% if user_created %}
+                    <div>
+                        <div class="alert alert-success text-center" role="alert">
+                            Usuário criado com sucesso. Faça o Login.
+                        </div>
+                    </div>
+                    {% endif %}
+                    <form action="" method="post" novalidate>
                         {{ form.hidden_tag() }}
                         <div class="form-group">
                             <p>
