@@ -1,6 +1,6 @@
 from flask import Flask
 from app.ping import ping
-from app.vulapp import auth
+from app.vulapp import auth, profile
 from app.vulapp import sql_injection, cross_site_scripting
 import os
 from app.vulapp.database.db import init_db, db
@@ -11,15 +11,17 @@ ACTIVE_ENDPOINTS = (
 	("/", ping),
 	("/", auth ),
 	("/", sql_injection),
-	("/", cross_site_scripting)
+	("/", cross_site_scripting),
+	("/", profile)
 	)
 
 def create_app():
 	app = Flask(__name__)
 
 	#use a stored secret key to keep sessions in application reload
-	app.config['SECRET_KEY'] = os.urandom(50) 
-
+	app.config['SECRET_KEY'] = os.urandom(50)
+	app.config['SESSION_COOKIE_HTTPONLY'] = True
+	
 	# accepts both /endpoint and /endpoint/ as valid URLs
 	app.url_map.strict_slashes = False
 

@@ -33,8 +33,8 @@ def login():
 		user = LoginHandler().check_user(form.username.data, form.password.data)
 
 		if user:
-			login_user(user)
-			return redirect('/')
+			login_user(user, remember=True)
+			return redirect('/my_profile')
 
 	user_created = None
 	if request.args.get('user_created'):

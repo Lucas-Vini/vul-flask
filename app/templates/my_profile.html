@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block container %}
+<ul class="list-group nav nav-pills">
+    <li class="list-group-item list-group-item-action text-center bg-dark "><h2 class="text-white">Meu perfil</h2></li>
+<li class="list-group-item">
+        <div class="container-fluid">
+            <div class="row">
+                <h2 class="text-center">Olá, {{ name }}!</h2>
+                <br>
+                <h4>Saldo atual</h4>
+                <h6>100 pontos</h6>
+                <br class="my-2">
+                <h4>Seus produtos</h4>
+                <h6>Camisa Cor Amarela Tamanho Médio</h6>
+                <h6>Cueca Cor Branca Tamanho Pequeno</h6> 
+            </div>
+        </div>
+    </li>
+</ul>
+{% endblock %}
