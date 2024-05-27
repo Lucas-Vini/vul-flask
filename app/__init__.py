@@ -20,7 +20,6 @@ def create_app():
 
 	#use a stored secret key to keep sessions in application reload
 	app.config['SECRET_KEY'] = os.urandom(50)
-	app.config['SESSION_COOKIE_HTTPONLY'] = True
 	
 	# accepts both /endpoint and /endpoint/ as valid URLs
 	app.url_map.strict_slashes = False
