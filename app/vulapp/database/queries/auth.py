@@ -9,6 +9,7 @@ def add_new_user(username, password_hash):
 		)
 	db.session.add(new_user)
 	db.session.commit()
+	return new_user
 
 def get_user(username):
 	return User.query.filter_by(username=username).first()

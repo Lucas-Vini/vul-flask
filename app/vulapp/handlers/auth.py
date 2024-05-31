@@ -1,5 +1,6 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.vulapp.database.queries import auth as auth_queries
+from app.vulapp.database.queries import account as account_queries
 
 class SignUpHandler():
 	def __init__(self, username, password):
@@ -18,7 +19,8 @@ class SignUpHandler():
 		return False
 
 	def create_user(self, username, password_hash):
-		auth_queries.add_new_user(username, password_hash)
+		user = auth_queries.add_new_user(username, password_hash)
+		account_queries.create_user_account(user.id)
 
 class LoginHandler():
 	def check_user(self, username, password):

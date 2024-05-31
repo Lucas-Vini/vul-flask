@@ -9,11 +9,34 @@
                 <h2 class="text-center">Olá, {{ name }}!</h2>
                 <br>
                 <h4>Saldo atual</h4>
-                <h6>100 pontos</h6>
+                <h6>{{user_score}} pontos</h6>
                 <br class="my-2">
                 <h4>Seus produtos</h4>
-                <h6>Camisa Cor Amarela Tamanho Médio</h6>
-                <h6>Cueca Cor Branca Tamanho Pequeno</h6> 
+                <div class="row">
+                    {% if user_products %}
+                    <br>
+                    <table class="table table-hover table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">Nome do Produto</th>
+                                <th scope="col">Preço</th>
+                                <th scope="col">Estoque</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user_product in user_products %}
+                                <tr>
+                                    <td>{{ user_product.name }}</td>
+                                    <td>{{ user_product.price }}</td>
+                                    <td>{{ user_product.stock }}</td>
+                                </tr>
+                            {% endfor %} 
+                        </tbody>
+                    </table>
+                    {% else %}
+                        Você não possui nenhum produto ainda.
+                    {% endif %}
+                </div>
             </div>
         </div>
     </li>
