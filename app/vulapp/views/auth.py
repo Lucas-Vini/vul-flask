@@ -18,6 +18,9 @@ def signup():
 		user_created = SignUpHandler(form.username.data, form.password.data).user_created
 		if user_created:
 			return redirect(url_for('auth.login', user_created=True))
+		else:
+			return render_template('signup.html', title="Cadastrar", form=form, signup_failed=True)
+
 
 	return render_template('signup.html', title="Cadastrar", form=form)
 
@@ -35,6 +38,9 @@ def login():
 		if user:
 			login_user(user, remember=True)
 			return redirect('/my_profile')
+		else:
+			return render_template('login.html', title="Entrar", form=form, login_failed=True)
+
 
 	user_created = None
 	if request.args.get('user_created'):
