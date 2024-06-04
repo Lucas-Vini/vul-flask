@@ -2,7 +2,7 @@ from flask import Blueprint
 from flask import render_template, redirect, url_for, request
 from app.vulapp.forms.auth import SignUpForm, LoginForm
 from app.vulapp.handlers.auth import SignUpHandler, LoginHandler
-from flask_login import current_user, login_user
+from flask_login import current_user, login_user, logout_user
 
 auth = Blueprint("auth", __name__)
 
@@ -47,3 +47,8 @@ def login():
 		user_created = request.args['user_created']
 
 	return render_template('login.html', title="Entrar", form=form, user_created=user_created)
+
+@auth.route("/logout", methods = ['GET'])
+def logout():
+	logout_user()
+	return redirect('/')

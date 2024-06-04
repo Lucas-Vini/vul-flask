@@ -31,10 +31,12 @@
 		<div class="mr-auto px-3">
             {% if current_user.is_authenticated %}
 	    	    <a href="/my_profile" class="navbar-text px-3 my-nav-link">Meu perfil</a>
+                <a href="/logout" class="navbar-text px-3 my-nav-link">Sair</a>
             {% else %}
                 <a href="/login" class="navbar-text px-3 my-nav-link">Entrar</a>
+                <a href="/signup" class="navbar-text px-3 my-nav-link">Cadastrar</a>
             {% endif %}
-	    	<a href="/signup" class="navbar-text px-3 my-nav-link">Cadastrar</a>
+	    	
 		</div>
 		
 	</div>
