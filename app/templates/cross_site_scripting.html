@@ -5,52 +5,60 @@
     <li class="list-group-item list-group-item-action text-center bg-dark "><h2 class="text-white">Cross-Site Scripting</h2></li>
 <li class="list-group-item">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-10 offset-1">
-                    <form action="" method="post">
-                        <div class="row">
-                                {{ form.hidden_tag() }}
-                            <div class="form-group col-sm-2">
-                                <br>
-                                <p class="form-switch form-check">
-                                    {{ form.xss.label(class_="form-check-label") }}
-                                    {{ form.xss(class_="form-control form-check-input") }}
-                                </p>
-                            </div>
-                            <div class="form-group col-sm-9">
-                                <p>
-                                    {{ form.bet.label }}<br>
-                                    {{ form.bet(class_="form-control") }}
-                                </p>
-                            </div>
-                            <div class="text-center col-sm-1">
-                                <br>
-                                {{ form.submit(class_="btn btn-dark") }}
-                            </div>
-                        </div> 
-                    </form>
+            {% if not_authenticated %}
+                <div class="row text-center">
+                    <h4>Você precisa estar autenticado para fazer uma transferência.</h4>
+                    <div class="text-center">
+                        <a href="/login" class="btn btn-dark col-2 my-2"> Ir para login</a>
+                    </div>
                 </div>
-            </div>
-            <div class="row text-center">
-                <p>
-                Escolha um dos animais do sorteio:<br>
-                Macaco, Lagarto, Tartaruga, Galinha, Tubarão, Cobra, Baleia, Besouro, Onça, Tucano</p>
-            </div>
-            <div class="row text-center">
-                {% if result is not none%}
-                    {% if result %}
-                        <h1 class="text-success">Parabéns, você ganhou 50 pontos!</h1>
-                    {% else %}
-                        <h1 class="text-danger">Que pena, você perdeu 2 pontos!</h1>
+            {% else %}
+                <div class="row">
+                    <div class="col-sm-10 offset-1">
+                        <form action="" method="post">
+                            <div class="row">
+                                    {{ form.hidden_tag() }}
+                                <div class="form-group col-sm-2">
+                                    <br>
+                                    <p class="form-switch form-check">
+                                        {{ form.xss.label(class_="form-check-label") }}
+                                        {{ form.xss(class_="form-control form-check-input") }}
+                                    </p>
+                                </div>
+                                <div class="form-group col-sm-9">
+                                    <p>
+                                        {{ form.bet.label }}<br>
+                                        {{ form.bet(class_="form-control") }}
+                                    </p>
+                                </div>
+                                <div class="text-center col-sm-1">
+                                    <br>
+                                    {{ form.submit(class_="btn btn-dark") }}
+                                </div>
+                            </div> 
+                        </form>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <p>
+                    Escolha um dos animais do sorteio:<br>
+                    Macaco, Lagarto, Tartaruga, Galinha, Tubarão, Cobra, Baleia, Besouro, Onça, Tucano</p>
+                </div>
+                <div class="row text-center">
+                    {% if result is not none%}
+                        {% if result %}
+                            <h1 class="text-success">Parabéns, você ganhou 50 pontos!</h1>
+                        {% else %}
+                            <h1 class="text-danger">Que pena, você perdeu 2 pontos!</h1>
+                        {% endif %}
+                        {% if xss %}
+                            <h4>Você escolheu o animal {{bet|safe}} e o animal sorteado foi {{animal}}.</h4>
+                        {% else %}
+                            <h4>Você escolheu o animal {{bet}} e o animal sorteado foi {{animal}}.</h4>
+                        {% endif %}                    
                     {% endif %}
-                    {% if xss %}
-                        <h4>Você escolheu o animal {{bet|safe}} e o animal sorteado foi {{animal}}.</h4>
-                    {% else %}
-                        <h4>Você escolheu o animal {{bet}} e o animal sorteado foi {{animal}}.</h4>
-                    {% endif %}                    
-                {% endif %}
-
-            </div>
+                </div>
+            {% endif %}
         </div>
     </li>
 </ul>

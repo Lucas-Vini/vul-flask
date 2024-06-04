@@ -15,6 +15,13 @@ def bet():
 	user_bet = None
 
 	if form.validate_on_submit():
+		if not current_user.is_authenticated:
+			return render_template('cross_site_scripting.html',
+							title="Cross-Site Scripting",
+							form=form,
+							xss=form.xss.data,
+							not_authenticated=True)
+
 		bet = BetHandler()
 		animal = bet.draw_an_animal().lower()
 		user_bet = form.bet.data.lower()

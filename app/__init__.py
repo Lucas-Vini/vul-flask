@@ -1,7 +1,7 @@
 from flask import Flask
 from app.ping import ping
 from app.vulapp import auth, profile
-from app.vulapp import sql_injection, cross_site_scripting
+from app.vulapp import sql_injection, cross_site_scripting, cross_site_request_forgery
 import os
 from app.vulapp.database.db import init_db, db
 from app.vulapp.extensions.flask_login import init_login
@@ -12,7 +12,8 @@ ACTIVE_ENDPOINTS = (
 	("/", auth ),
 	("/", sql_injection),
 	("/", cross_site_scripting),
-	("/", profile)
+	("/", profile),
+	("/", cross_site_request_forgery)
 	)
 
 def create_app():
