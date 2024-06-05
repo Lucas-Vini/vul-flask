@@ -27,12 +27,6 @@ def bet():
 		user_bet = form.bet.data.lower()
 		result = BetHandler().bet_checker(user_bet, animal, current_user.get_id())
 
-	if form.xss.data:
-		current_app.config['REMEMBER_COOKIE_HTTPONLY'] = False
-		current_app.config['SESSION_COOKIE_HTTPONLY'] = False
-	else:
-		current_app.config['REMEMBER_COOKIE_HTTPONLY'] = True
-		current_app.config['SESSION_COOKIE_HTTPONLY'] = True
 
 	response = make_response(render_template('cross_site_scripting.html',
 							title="Cross-Site Scripting",
