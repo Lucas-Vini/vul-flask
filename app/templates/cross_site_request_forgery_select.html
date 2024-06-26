@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block container %}
+<ul class="list-group nav nav-pills">
+    <li class="list-group-item list-group-item-action text-center bg-dark "><h2 class="text-white">Cross-Site Request Forgery</h2></li>
+    <li class="list-group-item">
+        <div class="container-fluid">
+            <div class="row">
+                {% if current_user.is_authenticated %}
+                    <div class="row text-center">
+                        <h4>Ir para transferência protegida contra CSRF</h4>
+                        <div class="text-center">
+                            <a href="/cross_site_request_forgery_safe" class="btn btn-dark col-3 my-2">Safe Transfer</a>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <h4>Ir para transferência vulnerável a CSRF</h4>
+                        <div class="text-center">
+                            <a href="/cross_site_request_forgery_vulnerable" class="btn btn-dark col-3 my-2">Vulnerable Trasfer</a>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="row text-center">
+                        <h4>Você precisa estar autenticado para fazer uma transferência.</h4>
+                        <div class="text-center">
+                            <a href="/login" class="btn btn-dark col-2 my-2"> Ir para login</a>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </li>
+</ul>
+{% endblock %}

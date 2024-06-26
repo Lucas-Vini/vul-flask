@@ -16,3 +16,12 @@ def change_score(user_id, delta):
 	account.score += delta
 	db.session.add(account)
 	db.session.commit()
+
+def transfer_score(value, from_user, to_user):
+	from_user_db = Account.query.filter_by(user=from_user).first()
+	to_user_db = Account.query.filter_by(user=to_user).first()
+	from_user_db.score -= value
+	to_user_db.score += value
+	db.session.add(to_user_db)
+	db.session.add(from_user_db)
+	db.session.commit()
