@@ -16,7 +16,12 @@ def safe_transfer():
 	if not current_user.is_authenticated:
 		return redirect('/cross_site_request_forgery_select')
 
-	return render_template('cross_site_request_forgery_safe.html', title="Transferir")
+	form = TransferForm()
+
+	if form.validate_on_submit():
+		pass
+
+	return render_template('cross_site_request_forgery_safe.html', title="Transferir", form=form)
 
 @cross_site_request_forgery.route("/cross_site_request_forgery_vulnerable", methods = ['GET', 'POST'])
 def vul_transfer():
