@@ -7,6 +7,19 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-10 offset-1">
+                    {% if transfered %}
+                    <div>
+                        <div class="alert alert-success text-center" role="alert">
+                            {{ message }}
+                        </div>
+                    </div>
+                    {% elif transfered is not none %}
+                    <div>
+                        <div class="alert alert-danger text-center" role="alert">
+                            {{ message }}
+                        </div>
+                    </div>
+                    {% endif %}
                     <form action="" method="post" novalidate>
                         {{ form.hidden_tag() }}
                         <div class="form-group">

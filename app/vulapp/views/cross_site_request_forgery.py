@@ -17,11 +17,21 @@ def safe_transfer():
 		return redirect('/cross_site_request_forgery_select')
 
 	form = TransferForm()
+	message = None
+	transfered = None
 
 	if form.validate_on_submit():
-		pass
+		transfer = TransferHandler(value=form.value.data,
+						from_user=current_user.get_id(),
+						to_user=form.send_to.data)
+		message = transfer.message
+		transfered = transfer.transfered
 
-	return render_template('cross_site_request_forgery_safe.html', title="Transferir", form=form)
+	return render_template('cross_site_request_forgery_safe.html',
+							title="Transferir",
+							form=form,
+							message=message,
+							transfered=transfered)
 
 @cross_site_request_forgery.route("/cross_site_request_forgery_vulnerable", methods = ['GET', 'POST'])
 def vul_transfer():

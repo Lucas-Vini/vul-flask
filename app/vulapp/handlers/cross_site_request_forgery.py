@@ -6,18 +6,19 @@ class TransferHandler():
 		self.value = float(value)
 		self.from_user = from_user
 		self.to_user = to_user
-		self.error = None
-		self.transfered = self.transfer()
+		self.transfered = False
+		self.message = self.transfer()
 
 	def transfer(self):
 		if not self.user_exist():
-			self.error = "Erro ao tentar tranferir para este usuário"
-			return False
+			return "Erro ao tentar tranferir para este usuário"
 		if not self.enough_score():
-			self.error = "Saldo insuficiente"
-			return False
+			return "Saldo insuficiente"
 		self.transfered = self.execute_transfer()
-		return True
+		if self.transfered:
+			return "Transferência realizada com sucesso"
+		else:
+			return "Algo de errado aconteceu ao tentar fazer a transferência"
 
 	def user_exist(self):
 		user = auth_queries.get_user(self.to_user)
@@ -32,6 +33,10 @@ class TransferHandler():
 		return False
 
 	def execute_transfer(self):
-		account_queries.transfer_score(self.value, self.from_user, self.to_user)
+		try:
+			account_queries.transfer_score(self.value, self.from_user, self.to_user)
+			return True
+		except:
+			return False
 
 
