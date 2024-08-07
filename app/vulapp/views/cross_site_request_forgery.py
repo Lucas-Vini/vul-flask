@@ -38,4 +38,6 @@ def vul_transfer():
 	if not current_user.is_authenticated:
 		return redirect('/cross_site_request_forgery_select')
 
-	return render_template('cross_site_request_forgery_vulnerable.html', title="Transferir")
+	return render_template('cross_site_request_forgery_vulnerable.html',
+							title="Transferir",
+							transfered=None)

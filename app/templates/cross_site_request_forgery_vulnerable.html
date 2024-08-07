@@ -1,5 +1,36 @@
 {% extends 'base.html' %}
 
 {% block container %}
-	vul transfer
+<ul class="list-group nav nav-pills">
+    <li class="list-group-item list-group-item-action text-center bg-dark "><h2 class="text-white">Cross-Site Request Forgery Safe</h2></li>
+    <li class="list-group-item">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-10 offset-1">
+                    {% if transfered %}
+                    <div>
+                        <div class="alert alert-success text-center" role="alert">
+                            {{ message }}
+                        </div>
+                    </div>
+                    {% elif transfered is not none %}
+                    <div>
+                        <div class="alert alert-danger text-center" role="alert">
+                            {{ message }}
+                        </div>
+                    </div>
+                    {% endif %}
+                    <form action="" method="post" novalidate>
+                        <div class="form-group">
+                            <p>
+                            	include form here.
+                            </p>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 {% endblock %}
