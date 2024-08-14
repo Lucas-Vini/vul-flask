@@ -20,10 +20,14 @@
                         </div>
                     </div>
                     {% endif %}
-                    <form action="" method="post" novalidate>
+                    <form action="/cross_site_request_forgery_vulnerable" method="post">
                         <div class="form-group">
-                            <p>
-                            	include form here.
+                            <p class="text-center">
+  								<label for="send_to">Quantidade de pontos que quer transferir</label><br>
+  								<input type="text" id="value" name="value" class="form-control"><br>
+  								<label for="send_to">Usuário para quem quer transferir estes pontos</label><br>
+  								<input type="text" id="send_to" name="send_to" class="form-control"><br>
+  								<input type="submit" id="transfer" value="Trasferir" class="btn btn-dark">
                             </p>
                         </div>
                         
