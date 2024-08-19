@@ -38,6 +38,18 @@ def vul_transfer():
 	if not current_user.is_authenticated:
 		return redirect('/cross_site_request_forgery_select')
 
+	message = None
+	transfered = None
+	value = request.form.get('value')
+	send_to = request.form.get('send_to')
+
+	if value and send_to:
+		transfer = TransferHandler(value=value,
+						from_user=current_user.get_id(),
+						to_user=send_to)
+
+
 	return render_template('cross_site_request_forgery_vulnerable.html',
 							title="Transferir",
-							transfered=None)
+							message=message,
+							transfered=True)
