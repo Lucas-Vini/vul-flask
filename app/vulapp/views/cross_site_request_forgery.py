@@ -47,9 +47,11 @@ def vul_transfer():
 		transfer = TransferHandler(value=value,
 						from_user=current_user.get_id(),
 						to_user=send_to)
+		message = transfer.message
+		transfered = transfer.transfered
 
 
 	return render_template('cross_site_request_forgery_vulnerable.html',
 							title="Transferir",
 							message=message,
-							transfered=True)
+							transfered=transfered)
