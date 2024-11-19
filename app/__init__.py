@@ -23,6 +23,7 @@ def create_app():
 	app.config['SECRET_KEY'] = os.urandom(50)
 	app.config['REMEMBER_COOKIE_HTTPONLY'] = False
 	app.config['SESSION_COOKIE_HTTPONLY'] = False
+	app.config['SESSION_COOKIE_SAMESITE'] = None
 	
 	# accepts both /endpoint and /endpoint/ as valid URLs
 	app.url_map.strict_slashes = False
